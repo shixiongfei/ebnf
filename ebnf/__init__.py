@@ -6,4 +6,5 @@ __version__ = version = '.'.join(map(str, __version))
 
 __all__ = [
     'lexer',
+    'parser',
 ]

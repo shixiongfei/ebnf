@@ -21,7 +21,7 @@ class Token:
             return False
         return self.token == other.token and self.tag == other.tag
 
-    def __repl__(self):
+    def __repr__(self):
         return self.asString()
 
     def __str__(self):
