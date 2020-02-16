@@ -16,6 +16,11 @@ class Token:
     def asString(self):
         return "<{0}:{1}>".format(self.token, self.tag)
 
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return False
+        return self.token == other.token and self.tag == other.tag
+
     def __repl__(self):
         return self.asString()
 
@@ -111,3 +116,12 @@ class Lexer:
             return self.readRule()
 
         return self.readSymbol()
+
+    def scanAll(self):
+        tokens = []
+        while True:
+            token = self.scan()
+            if token is None:
+                break
+            tokens.append(token)
+        return tokens
