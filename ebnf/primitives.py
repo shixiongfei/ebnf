@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
-class Stmt:
+class Statement:
     def asString(self):
         raise Exception("Missing `asString` method")
 
@@ -12,7 +12,7 @@ class Stmt:
         return self.asString()
 
 
-class Optional(Stmt):
+class Optional(Statement):
     def __init__(self, token):
         super().__init__()
         self.token = token
@@ -21,7 +21,7 @@ class Optional(Stmt):
         return "Optional({0})".format(self.token.asString())
 
 
-class Repetition(Stmt):
+class Repetition(Statement):
     def __init__(self, token):
         super().__init__()
         self.token = token
@@ -30,7 +30,7 @@ class Repetition(Stmt):
         return "Repetition({0})".format(self.token.asString())
 
 
-class Grouping(Stmt):
+class Grouping(Statement):
     def __init__(self, token):
         super().__init__()
         self.token = token
@@ -39,31 +39,31 @@ class Grouping(Stmt):
         return "Grouping({0})".format(self.token.asString())
 
 
-class Alternation(Stmt):
-    def __init__(self, token, tail):
+class Alternation(Statement):
+    def __init__(self, lhs, rhs):
         super().__init__()
-        self.token = token
-        self.tail = tail
+        self.lhs = lhs
+        self.rhs = rhs
 
     def asString(self):
         return "Alternation({0}, {1})".format(
-            self.token.asString(), self.tail.asString()
+            self.lhs.asString(), self.rhs.asString()
         )
 
 
-class Concatenation(Stmt):
-    def __init__(self, token, tail):
+class Concatenation(Statement):
+    def __init__(self, lhs, rhs):
         super().__init__()
-        self.token = token
-        self.tail = tail
+        self.lhs = lhs
+        self.rhs = rhs
 
     def asString(self):
         return "Concatenation({0}, {1})".format(
-            self.token.asString(), self.tail.asString()
+            self.lhs.asString(), self.rhs.asString()
         )
 
 
-class Rule(Stmt):
+class Rule(Statement):
     def __init__(self, rule, stmt, *args, **kwargs):
         self.rule = rule
         self.stmt = stmt
