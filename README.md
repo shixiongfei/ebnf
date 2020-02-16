@@ -1,2 +1,0 @@
-# ebnf
-An EBNF parser
