@@ -4,16 +4,6 @@ import unittest
 from ebnf.exception import SyntaxException
 from ebnf.lexer import Lexer, Token
 
-# tokens = []
-
-# with open("./spec/sample.ebnf") as fp:
-#     lexer = Lexer(fp.read())
-#     while True:
-#         token = lexer.scan()
-#         if token is None:
-#             break
-#         tokens.append(token)
-
 
 class TestLexerCase(unittest.TestCase):
     def test_doubleQuote(self):
