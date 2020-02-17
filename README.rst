@@ -3,13 +3,6 @@ ebnf
 
 An EBNF parser
 
-Installation
-------------
-
-.. code-block:: python
-
-    pip install ebnf
-
 Example
 -------
 
@@ -65,3 +58,16 @@ Lexer Example
         if token is None:
             break
         print(token)
+
+Parser Example
+~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from ebnf.lexer import Lexer
+    from ebnf.parser import Parser
+
+    parser = Parser(Lexer(source))
+    program = parser.grammar()
+    for rule in program:
+        print(rule)
