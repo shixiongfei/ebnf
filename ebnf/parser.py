@@ -6,7 +6,7 @@ from .lexer import Token
 from .primitives import Rule, \
     Optional, Repetition, Grouping, Alternation, Concatenation
 
-logger = logging.getLogger('remrpc')
+logger = logging.getLogger('ebnf')
 
 
 class Parser:
